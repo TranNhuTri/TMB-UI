@@ -1,0 +1,66 @@
+<div fxLayout="column">
+    <div class="flex-p"> 
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-100">
+            <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox (change)="$event ? masterToggle() : null"
+                                  [checked]="selection.hasValue() && isAllSelected()"
+                                  [indeterminate]="selection.hasValue() && !isAllSelected()">
+                    </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-checkbox (click)="$event.stopPropagation()"
+                                  (change)="$event ? selection.toggle(row) : null"
+                                  [checked]="selection.isSelected(row)">
+                    </mat-checkbox>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
+            <ng-container matColumnDef="datebuy">
+                <mat-header-cell *matHeaderCellDef> Ngày mua </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.datebuy}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="datedelivery">
+                <mat-header-cell *matHeaderCellDef> Hẹn </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.datedelivery}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="dateactualdelivery">
+                <mat-header-cell *matHeaderCellDef> Giao </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.dateactualdelivery}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef> Tên dụng cụ/vật liệu </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+            </ng-container>     
+            <ng-container matColumnDef="supplier">
+                <mat-header-cell *matHeaderCellDef> Cty cung cấp </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.supplier}} </mat-cell>
+            </ng-container>        
+            <ng-container matColumnDef="quantity">
+                <mat-header-cell *matHeaderCellDef> SL </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.quantity}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="price">
+                <mat-header-cell *matHeaderCellDef> Đơn giá </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="otherfee">
+                <mat-header-cell *matHeaderCellDef> Phí khác </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.otherfee}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="total">
+                <mat-header-cell *matHeaderCellDef> Tổng cộng </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.total}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="paid">
+                <mat-header-cell *matHeaderCellDef> Đã trả </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.paid}} </mat-cell>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"(click)="selection.toggle(row)"></tr>
+        </table>
+    </div>
+</div>

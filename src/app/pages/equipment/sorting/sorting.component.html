@@ -1,0 +1,52 @@
+<div fxLayout="column">
+    <div class="flex-p"> 
+        <mat-table #table [dataSource]="dataSource" matSort class="mat-elevation-z8">       
+            <ng-container matColumnDef="position">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+            </ng-container>         
+            <ng-container matColumnDef="datebuy" matSort class="mat-elevation-z8">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Ngày mua </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.datebuy}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="datedelivery">
+                <mat-header-cell *matHeaderCellDef> Hẹn </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.datedelivery}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="dateactualdelivery">
+                <mat-header-cell *matHeaderCellDef> Giao </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.dateactualdelivery}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef> Tên dụng cụ/vật liệu </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+            </ng-container>     
+            <ng-container matColumnDef="supplier">
+                <mat-header-cell *matHeaderCellDef> Cty cung cấp </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.supplier}} </mat-cell>
+            </ng-container>        
+            <ng-container matColumnDef="quantity">
+                <mat-header-cell *matHeaderCellDef> SL </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.quantity}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="price">
+                <mat-header-cell *matHeaderCellDef> Đơn giá </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="otherfee">
+                <mat-header-cell *matHeaderCellDef> Phí khác </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.otherfee}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="total">
+                <mat-header-cell *matHeaderCellDef> Tổng cộng </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.total}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="paid">
+                <mat-header-cell *matHeaderCellDef> Đã trả </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.paid}} </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+</div>
